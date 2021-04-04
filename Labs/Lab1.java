@@ -125,4 +125,35 @@ public class Lab1
             System.out.println(files.get(i).getName()+ ": "+counter+" found");
              }
     }
+    public static void Setup(String Choice) throws IOException
+    {
+        try
+        {
+        if(Choice.matches("CLI"))
+        {
+            OperationByCLI();
+        }
+        else
+        {
+            OperationByGUI();
+        }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        } 
+    }
+    public static void OperationByCLI() throws IOException
+    {
+        ArrayList<File> files = FileOperation(splitter(catchInput()));
+        Scanner scan_word = new Scanner(System.in);
+        System.out.print("Plase input word : ");
+        String scanned = scan_word.nextLine();
+        readFile(files,scanned);
+    }
+    public static void OperationByGUI() throws IOException
+    {
+        System.out.print("Please Specify search word: ");
+        getFiles();
+    }
 }
