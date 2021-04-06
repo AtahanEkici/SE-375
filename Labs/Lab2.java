@@ -132,6 +132,7 @@ public class Lab2
     
      public static void readFile(File file, String word) throws FileNotFoundException, IOException
     { 
+        System.out.println("Thread " + Thread.currentThread().getId()+ " has read file: "+file.getName()+"");
             String[] words;
             int counter = 0;
             String line;
