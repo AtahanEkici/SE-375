@@ -18,13 +18,13 @@ public class Main
         Lab1.Setup("CLI"); 
         */
         
-        /* // LAB-2 //
+        
         ArrayList<File> files = FileOperation(splitter(catchInput())); // Catch files //
         Scanner scan_word = new Scanner(System.in);
         System.out.print("Plase input word : ");
         String scanned = scan_word.nextLine(); // catch keyword //
         Lab2_Runnable lab2 = new Lab2_Runnable(files,scanned);
         lab2.Start();
-        */
+        
     }
 }

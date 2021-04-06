@@ -8,9 +8,7 @@ import java.util.logging.Logger;
 
 public class Lab2_Runnable extends Lab2 implements Runnable 
 {
-    private ArrayList<Thread> threads = new ArrayList<>();
-    private static int counter = 0;
-    
+    private static ArrayList<Thread> threads = new ArrayList<>();
     private final ArrayList<File> files;
     private final String word;
     
@@ -33,7 +31,6 @@ public class Lab2_Runnable extends Lab2 implements Runnable
    {
        for(int i=0;i<threads.size();i++)
        {
-           System.out.println("deneme");
            threads.get(i).start();
        }
    }
@@ -45,7 +42,6 @@ public class Lab2_Runnable extends Lab2 implements Runnable
         {
             System.out.println("Thread " + Thread.currentThread().getId()+ " is running");
             Lab2.readFile(files.get((int) Thread.currentThread().getId() - 11), word);
-            counter++;
         } 
         catch (IOException ex) 
         {

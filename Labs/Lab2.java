@@ -178,7 +178,6 @@ public class Lab2
         System.out.print("Plase input word : ");
         String scanned = scan_word.nextLine();
         readFiles(files,scanned);
-        //readFile(files.get(0),scanned);
     }
     public static void OperationByGUI() throws IOException
     {
