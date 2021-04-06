@@ -31,11 +31,11 @@ public class Lab1
        String desktop = System.getProperty("user.home") +"/Desktop";
        ArrayList<File> files = new ArrayList<>();
        
-        if(fileadresses != null && fileadresses.length > 2)
+        if(fileadresses != null && fileadresses.length > 1)
         {
            for (int i=1;i<fileadresses.length;i++) 
            {
-               files.add(new File(desktop + "/" + fileadresses[i] + ".txt"));
+               files.add(new File(desktop+"/"+fileadresses[i]+".txt"));
            }
         }
         else
