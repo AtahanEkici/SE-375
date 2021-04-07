@@ -6,19 +6,18 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class Lab2_Runnable extends Lab2 implements Runnable 
+public final class Lab2_Runnable extends Lab2 implements Runnable 
 {
     private static ArrayList<Thread> threads = new ArrayList<>();
     private final ArrayList<File> files;
     private final String word;
+    private static int counter = 0;
     
     public void Thread_The_Files(ArrayList<File> files)
      {
-        for(int i=0;i<files.size();i++)
-        {
-            Thread temp = new Thread(this);
-            threads.add(temp);
-        }
+         files.stream().map(_item -> new Thread(this)).forEachOrdered(temp -> {
+             threads.add(temp);
+        });
      }
     
    public Lab2_Runnable(ArrayList<File> files, String word) 
@@ -40,13 +39,12 @@ public class Lab2_Runnable extends Lab2 implements Runnable
    {
         try 
         {
-            System.out.println("Thread " + Thread.currentThread().getId()+ " is running");
+            System.out.println("Thread " + Thread.currentThread().getId()+ " is running"); 
             Lab2.readFile(files.get((int) Thread.currentThread().getId() - 11), word);
-            //Thread.currentThread().join();
         } 
-        catch (IOException ex) 
+        catch (IOException e) 
         {
-            Logger.getLogger(Lab2_Runnable.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(Lab2_Runnable.class.getName()).log(Level.SEVERE, null, e);
         }
    }
 }
