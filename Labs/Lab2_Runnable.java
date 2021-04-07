@@ -15,8 +15,9 @@ public final class Lab2_Runnable extends Lab2 implements Runnable
     
     public void Thread_The_Files(ArrayList<File> files)
      {
-         files.stream().map(_item -> new Thread(this)).forEachOrdered(temp -> {
-             threads.add(temp);
+         files.stream().map(_item -> new Thread(this)).forEachOrdered(temp ->
+        {
+            threads.add(temp);
         });
      }
     

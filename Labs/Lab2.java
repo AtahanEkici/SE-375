@@ -13,7 +13,6 @@ import javax.swing.filechooser.FileNameExtensionFilter;
 
 public class Lab2
 {
-    
     public static int counter = 0;
     
     public static String[] splitter(String input) // //
@@ -22,7 +21,7 @@ public class Lab2
         
         if(input.contains("WordCount"))
         {
-            temp =  input.split("\\ ");
+            temp = input.split("\\ ");
         }
         else
         {
@@ -39,7 +38,10 @@ public class Lab2
         {
            for (int i=1;i<fileadresses.length;i++) 
            {
-               files.add(new File(desktop+"/"+fileadresses[i]+".txt"));
+               if(!fileadresses[i].equals(""))
+               {
+                   files.add(new File(desktop+"/"+fileadresses[i]+".txt"));
+               } 
            }
         }
         else
