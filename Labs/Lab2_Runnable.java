@@ -8,10 +8,9 @@ import java.util.logging.Logger;
 
 public final class Lab2_Runnable extends Lab2 implements Runnable 
 {
-    private static ArrayList<Thread> threads = new ArrayList<>();
+    private static final ArrayList<Thread> threads = new ArrayList<>();
     private final ArrayList<File> files;
     private final String word;
-    private static int counter = 0;
     
     public void Thread_The_Files(ArrayList<File> files)
      {

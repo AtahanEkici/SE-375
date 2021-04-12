@@ -23,6 +23,7 @@ public class Lab1
         else
         {
             System.out.println("Unidentified Operation");
+            System.exit(1);
         }
         return temp;
     }
@@ -33,14 +34,23 @@ public class Lab1
        
         if(fileadresses != null && fileadresses.length > 1)
         {
-           for (int i=1;i<fileadresses.length;i++) 
+           for (int i=1;i<fileadresses.length;i++) // i is started from 1 because of the 0th index is WordCount //
            {
-               files.add(new File(desktop+"/"+fileadresses[i]+".txt"));
+               File file = new File(desktop+"/"+fileadresses[i]+".txt");
+               
+               if(file.exists() && !file.isDirectory()) 
+               { 
+                   files.add(file);
+               }
+               else
+                {
+                   System.out.println(""+file.getName()+" could not be found or a directory");
+                } 
            }
         }
-        else
+        if(files.size() < 1)
         {
-            System.out.println("Please input a valid file(s)");
+            System.out.println("No legit files were found on the given user string");
             System.exit(1);
         }
        return files;

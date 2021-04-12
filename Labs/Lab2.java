@@ -11,54 +11,8 @@ import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
 import javax.swing.filechooser.FileNameExtensionFilter;
 
-public class Lab2
-{
-    public static int counter = 0;
-    
-    public static String[] splitter(String input) // //
-    {
-        String[] temp = null;
-        
-        if(input.contains("WordCount"))
-        {
-            temp = input.split("\\ ");
-        }
-        else
-        {
-            System.out.println("Unidentified Operation");
-        }
-        return temp;
-    }
-    public static ArrayList<File> FileOperation(String[] fileadresses)
-    {
-       String desktop = System.getProperty("user.home") +"/Desktop";
-       ArrayList<File> files = new ArrayList<>();
-       
-        if(fileadresses != null && fileadresses.length > 1)
-        {
-           for (int i=1;i<fileadresses.length;i++) 
-           {
-               if(!fileadresses[i].equals(""))
-               {
-                   files.add(new File(desktop+"/"+fileadresses[i]+".txt"));
-               } 
-           }
-        }
-        else
-        {
-            System.out.println("Please input a valid file(s)");
-            System.exit(1);
-        }
-       return files;
-    }
-    public static String catchInput()
-    {
-        String news;
-        Scanner scan = new Scanner(System.in);
-        news = scan.nextLine();
-        return news;
-    }
-    
+public class Lab2 extends Lab1
+{  
     public static void getFiles() throws IOException
     {
         File[] files;
@@ -84,7 +38,7 @@ public class Lab2
         for (File file : files) 
         {
             String[] words;
-            int counter = 0;
+            int counter_1 = 0;
             String line;
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
             {
@@ -96,22 +50,22 @@ public class Lab2
                     {
                         if (cont.equals(word)) 
                         {
-                            counter++;
+                            counter_1++;
                         }
                     }
                 }
             }
-            System.out.println(file.getName() + ": " + counter + " found");
+            System.out.println(file.getName() + ": " + counter_1 + " found");
         }
     }
     
-    public static void readFiles( ArrayList<File> files, String word) throws FileNotFoundException, IOException
+    public static void readFiles(ArrayList<File> files, String word) throws FileNotFoundException, IOException
     { 
         for(int i = 0; i<files.size();i++)
         {    
             File file = files.get(i);
             String[] words;
-            int counter = 0;
+            int counter_1 = 0;
             String line;
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
                 {
@@ -123,20 +77,19 @@ public class Lab2
                         {
                             if (cont.equals(word))
                             {
-                                counter++;
+                                counter_1++;
                             }
                         }
                     }
                 }
-            System.out.println(files.get(i).getName()+ ": "+counter+" found");
+            System.out.println(files.get(i).getName()+ ": "+counter_1+" found");
              }
     }
     
      public static void readFile(File file, String word) throws FileNotFoundException, IOException
     { 
-        System.out.println("Thread " + Thread.currentThread().getId()+ " has read file: "+file.getName()+"");
             String[] words;
-            int counter = 0;
+            int counter_1 = 0;
             String line;
             try (BufferedReader reader = new BufferedReader(new FileReader(file))) 
                 {
@@ -148,12 +101,13 @@ public class Lab2
                         {
                             if (cont.equals(word))
                             {
-                                counter++;
+                                counter_1++;
                             }
                         }
                     }
+                    System.out.println("Thread " + Thread.currentThread().getId()+ " has read file: "+file.getName()+"");
                 }
-            System.out.println(file.getName()+ ": "+counter+" found");
+            System.out.println(file.getName()+ ": "+counter_1+" found");
     }
 
     public static void Setup(String Choice) throws IOException
@@ -176,11 +130,12 @@ public class Lab2
     }
     public static void OperationByCLI() throws IOException
     {
-        ArrayList<File> files = FileOperation(splitter(catchInput()));
+        ArrayList<File> files = FileOperation(splitter(catchInput())); // Catch files //
         Scanner scan_word = new Scanner(System.in);
         System.out.print("Plase input word : ");
-        String scanned = scan_word.nextLine();
-        readFiles(files,scanned);
+        String scanned = scan_word.nextLine(); // catch keyword //
+        Lab2_Runnable lab2 = new Lab2_Runnable(files,scanned);
+        lab2.Start();
     }
     public static void OperationByGUI() throws IOException
     {

@@ -1,16 +1,5 @@
-import Labs.Lab1;
-import Labs.Lab2;
-import static Labs.Lab2.FileOperation;
-import static Labs.Lab2.catchInput;
-import static Labs.Lab2.readFiles;
-import static Labs.Lab2.splitter;
-import Labs.Lab2_Runnable;
-import java.io.File;
+import Labs.*;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Main 
 {
@@ -20,25 +9,27 @@ public class Main
         { 
             Lab1.Setup("CLI");
         } 
-        catch (IOException ex) 
+        catch (IOException e) 
         {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println("Error: "+e.getLocalizedMessage()+"");
         }
     }
     
     private static void LAB2()
     {
-        ArrayList<File> files = FileOperation(splitter(catchInput())); // Catch files //
-        Scanner scan_word = new Scanner(System.in);
-        System.out.print("Plase input word : ");
-        String scanned = scan_word.nextLine(); // catch keyword //
-        Lab2_Runnable lab2 = new Lab2_Runnable(files,scanned);
-        lab2.Start();
+        try
+        {
+            Lab2.Setup("CLI");
+        }
+        catch(IOException e)
+        {
+          System.out.println("Error: "+e.getLocalizedMessage()+"");
+        }    
     }
     
     public static void main(String[] args) throws IOException
     {
-       // LAB1();  
+       //LAB1();  
        LAB2();
     }
 }
