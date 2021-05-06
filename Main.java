@@ -35,7 +35,17 @@ public class Main
     {
         try 
         {
-            Lab4.OperationByCLI();
+            URL file1 = new URL("http://homes.ieu.edu.tr/tdirek/file1.txt");
+            URL file2 = new URL("http://homes.ieu.edu.tr/tdirek/file2.txt");
+            URL file3 = new URL("http://homes.ieu.edu.tr/tdirek/file3.txt");
+
+            ArrayList<URL> urls = new  ArrayList<>();
+
+            urls.add(file1);
+            urls.add(file2);
+            urls.add(file3);
+        
+            Lab4.OperationByCLI(urls);
         } 
         catch (MalformedURLException ex)
         {

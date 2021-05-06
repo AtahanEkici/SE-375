@@ -1,15 +1,9 @@
 package Labs;
 
-import static Labs.Lab1.FileOperation;
-import static Labs.Lab1.catchInput;
-import static Labs.Lab1.splitter;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.net.URI;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -44,18 +38,8 @@ public final class Lab4 extends Lab2 implements Runnable
        }
    }
    
-    public static void OperationByCLI() throws IOException
-    {
-        URL file1 = new URL("http://homes.ieu.edu.tr/tdirek/file1.txt");
-        URL file2 = new URL("http://homes.ieu.edu.tr/tdirek/file2.txt");
-        URL file3 = new URL("http://homes.ieu.edu.tr/tdirek/file3.txt");
-        
-        ArrayList<URL> urls = new  ArrayList<>();
-        
-        urls.add(file1);
-        urls.add(file2);
-        urls.add(file3);
-            
+    public static void OperationByCLI(ArrayList<URL> urls) throws IOException
+    {    
         Scanner scan_word = new Scanner(System.in);
         System.out.print("Plase input word for scanning: ");
         String scanned = scan_word.nextLine(); // catch keyword //
@@ -98,7 +82,7 @@ public final class Lab4 extends Lab2 implements Runnable
         } 
         catch (IOException e) 
         {
-            Logger.getLogger(Lab2_Runnable.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Lab4.class.getName()).log(Level.SEVERE, null, e);
         }
    }
 }
