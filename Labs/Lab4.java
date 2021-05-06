@@ -36,6 +36,7 @@ public final class Lab4 extends Lab2 implements Runnable
        {
            threads.get(i).start();
        }
+       threads.clear(); // clear all object after the operation is complete //
    }
    
     public static void OperationByCLI(ArrayList<URL> urls) throws IOException
@@ -46,6 +47,14 @@ public final class Lab4 extends Lab2 implements Runnable
         
         Lab4 deneme = new Lab4(urls,scanned);
         Lab4.Start();
+    }
+    
+    public static void ReadArray(Object[] a)
+    {
+        for(int i = 0;i<a.length;i++)
+        {
+            System.out.print(a[i]+" ");
+        }
     }
    
    public static void readFileUsingURI(URL FileURI, String word) throws FileNotFoundException, IOException
@@ -58,11 +67,14 @@ public final class Lab4 extends Lab2 implements Runnable
                 {
                     while ((line = in.readLine()) != null)
                     {
-                        words = line.split(" ");
+                        //line = line.replaceAll("\\,", "");
+                        //line = line.replaceAll("\\.", "");
                         
-                        for(String cont : words) 
+                        words = line.split(" "); 
+                        
+                        for(int i = 0;i<words.length;i++) 
                         {
-                            if (cont.equals(word))
+                            if (words[i].contains(word))
                             {
                                 counter_1++;
                             }

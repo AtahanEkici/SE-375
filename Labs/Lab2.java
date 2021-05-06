@@ -49,7 +49,7 @@ public class Lab2 extends Lab1
                         
                         for(String cont : words) 
                         {
-                            if (cont.equals(word))
+                            if (cont.contains(word))
                             {
                                 counter_1++;
                             }

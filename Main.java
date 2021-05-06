@@ -45,7 +45,7 @@ public class Main
             urls.add(file2);
             urls.add(file3);
         
-            Lab4.OperationByCLI(urls);
+            Lab4.OperationByCLI(urls); 
         } 
         catch (MalformedURLException ex)
         {
