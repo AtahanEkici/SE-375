@@ -45,10 +45,11 @@ public class Lab5 extends Lab3 implements Runnable
                                 }
                             }
                         }
-                        System.out.println("Thread " + Thread.currentThread().getId()+ " has read file: "+file.getName()+"");
+                    System.out.println("Thread " + Thread.currentThread().getId()+ " has read file: "+file.getName()+"");
                     lock.release();
                     System.out.println("Thread " + Thread.currentThread().getId()+ " has UNlocked the file: "+file.getName()+"");
                     System.out.println(file.getName()+ ": "+counter_1+" found");
+                    channel.close();
                 } // file lock
     }
     
