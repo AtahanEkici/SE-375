@@ -16,12 +16,13 @@ public final class Lab4 extends Lab2 implements Runnable
     private final ArrayList<URL> urls;
     private final String word;
     
-    public void Thread_The_Files(ArrayList<URL> files)
+    public void Thread_The_Files(ArrayList<URL> url)
      {
-        files.stream().map(_item -> new Thread(this)).forEachOrdered(temp ->
+        for(int i = 0; i<url.size();i++)
         {
+            Thread temp = new Thread(this);
             threads.add(temp);
-        });
+        }
      }
     
    public Lab4(ArrayList<URL> files, String word) 
@@ -67,14 +68,15 @@ public final class Lab4 extends Lab2 implements Runnable
                 {
                     while ((line = in.readLine()) != null)
                     {
-                        //line = line.replaceAll("\\,", "");
-                        //line = line.replaceAll("\\.", "");
+                        line = line.replaceAll("\\,", "");
+                        line = line.replaceAll("\\.", "");
+                        line = line.trim();
                         
                         words = line.split(" "); 
                         
-                        for(int i = 0;i<words.length;i++) 
+                        for (String word1 : words)
                         {
-                            if (words[i].contains(word))
+                            if (word1.contains(word)) 
                             {
                                 counter_1++;
                             }

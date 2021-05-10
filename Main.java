@@ -52,11 +52,23 @@ public class Main
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    private static void LAB5()
+    {
+        try 
+        { 
+            Lab5.OperationByCLI();
+        } 
+        catch (IOException e) 
+        {
+            System.out.println("Error: "+e.getLocalizedMessage()+"");
+        }
+    }
     
     public static void main(String[] args) throws IOException
     {
        //LAB1();  
        //LAB2();
-        LAB4();
+        //LAB4();
+        LAB5();
     }
 }

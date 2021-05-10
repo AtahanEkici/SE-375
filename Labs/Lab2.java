@@ -10,6 +10,7 @@ import java.util.Scanner;
 
 public class Lab2 extends Lab1
 {  
+    
     public static void readFiles(File[] files, String word) throws FileNotFoundException, IOException
     { 
         for (File file : files) 
@@ -84,8 +85,8 @@ public class Lab2 extends Lab1
         Scanner scan_word = new Scanner(System.in);
         System.out.print("Plase input word : ");
         String scanned = scan_word.nextLine(); // catch keyword //
-        Lab2_Runnable lab2 = new Lab2_Runnable(files,scanned);
-        lab2.Start();
+        Lab3 lab3 = new Lab3(files,scanned);
+        lab3.Start();
     }
     public static void OperationByGUI() throws IOException
     {
