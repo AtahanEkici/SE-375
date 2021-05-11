@@ -27,9 +27,8 @@ public class Lab5 extends Lab3 implements Runnable
             int counter_1 = 0;
             String line;
             
-            try (RandomAccessFile RAF = new RandomAccessFile(file, "rw")) 
+            try (RandomAccessFile RAF = new RandomAccessFile(file, "rw"); FileChannel channel = RAF.getChannel()) 
                 {
-                    FileChannel channel = RAF.getChannel();
                     FileLock lock = channel.lock(); // file lock
                     System.out.println("Thread " + Thread.currentThread().getId()+ " has locked the file: "+file.getName()+"");
                     
@@ -49,9 +48,9 @@ public class Lab5 extends Lab3 implements Runnable
                     lock.release();
                     System.out.println("Thread " + Thread.currentThread().getId()+ " has UNlocked the file: "+file.getName()+"");
                     System.out.println(file.getName()+ ": "+counter_1+" found");
-                    channel.close();
                 } // file lock
-    }
+        // file lock
+            }
     
     @Override
    public void run() 
