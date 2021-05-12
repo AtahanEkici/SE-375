@@ -16,9 +16,11 @@ import java.util.logging.Logger;
 
 public class Lab5 extends Lab3 implements Runnable
 { 
+    private int counter = -1;
     public Lab5(ArrayList<File> files, String word) 
     {
         super(files, word);
+        System.out.println(Thread.activeCount());
     }
     
     public static void readFile(File file, String word) throws FileNotFoundException, IOException
@@ -58,7 +60,7 @@ public class Lab5 extends Lab3 implements Runnable
         try 
         {
             System.out.println("Thread " + Thread.currentThread().getId()+ " is running"); 
-            Lab5.readFile(files.get((int) Thread.currentThread().getId() - 11), word);
+            Lab5.readFile(files.get(++counter), word);
         } 
         catch (IOException e) 
         {
