@@ -3,10 +3,12 @@ package Labs;
 import static Labs.Lab1.FileOperation;
 import static Labs.Lab1.catchInput;
 import static Labs.Lab1.splitter;
+import static Labs.Lab4.readFileUsingURI;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.RandomAccessFile;
+import java.net.URL;
 import java.nio.channels.FileChannel;
 import java.nio.channels.FileLock;
 import java.util.ArrayList;
@@ -17,9 +19,16 @@ import java.util.logging.Logger;
 public class Lab5 extends Lab3 implements Runnable
 { 
     private int counter = -1;
-    public Lab5(ArrayList<File> files, String word) 
+    
+    public Lab5(ArrayList<File> files, String word,int a) 
     {
-        super(files, word);
+        super(files, word,1);
+        System.out.println(Thread.activeCount());
+    }
+    
+    public Lab5(ArrayList<URL> urls, String word) 
+    {
+        super(urls, word);
         System.out.println(Thread.activeCount());
     }
     
@@ -59,8 +68,15 @@ public class Lab5 extends Lab3 implements Runnable
    {
         try 
         {
+            if(urls == null)
+            {
             System.out.println("Thread " + Thread.currentThread().getId()+ " is running"); 
             Lab5.readFile(files.get(++counter), word);
+            }
+            else
+            {
+              readFileUsingURI(urls.get(++counter), word);  
+            }           
         } 
         catch (IOException e) 
         {
@@ -68,13 +84,22 @@ public class Lab5 extends Lab3 implements Runnable
         }
    }
     
-    public static void OperationByCLI() throws IOException
+    public static void OperationByFile() throws IOException
     {
         ArrayList<File> files = FileOperation(splitter(catchInput())); // Catch files //
         Scanner scan_word = new Scanner(System.in);
         System.out.print("Plase input word : ");
         String scanned = scan_word.nextLine(); // catch keyword //
-        Lab5 lab5 = new Lab5(files,scanned);
+        Lab5 lab5 = new Lab5(files,scanned,1);
+        lab5.Start();
+    }
+    
+    public static void OperationByURL(ArrayList<URL> urls) throws IOException
+    {
+        Scanner scan_word = new Scanner(System.in);
+        System.out.print("Plase input word for scanning: ");
+        String scanned = scan_word.nextLine(); // catch keyword //
+        Lab5 lab5 = new Lab5(urls,scanned);
         lab5.Start();
     }
 }

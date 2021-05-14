@@ -45,7 +45,6 @@ public final class Lab4 extends Lab2 implements Runnable
         Scanner scan_word = new Scanner(System.in);
         System.out.print("Plase input word for scanning: ");
         String scanned = scan_word.nextLine(); // catch keyword //
-        
         Lab4 deneme = new Lab4(urls,scanned);
         Lab4.Start();
     }

@@ -8,6 +8,27 @@ import java.util.logging.Logger;
 
 public class Main 
 {
+    public static ArrayList<URL> Url_Storage()
+    {
+         ArrayList<URL> urls = new  ArrayList<>();
+         
+        try
+        {
+            URL file1 = new URL("http://homes.ieu.edu.tr/tdirek/file1.txt");
+            URL file2 = new URL("http://homes.ieu.edu.tr/tdirek/file2.txt");
+            URL file3 = new URL("http://homes.ieu.edu.tr/tdirek/file3.txt");
+            
+            urls.add(file1);
+            urls.add(file2);
+            urls.add(file3);   
+        } 
+        catch (MalformedURLException ex) 
+        {
+            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return urls;
+    }
+    
     public static void LAB1()
     {
         try 
@@ -33,32 +54,16 @@ public class Main
     }
     private static void LAB4() throws IOException
     {
-        try 
-        {
-            URL file1 = new URL("http://homes.ieu.edu.tr/tdirek/file1.txt");
-            URL file2 = new URL("http://homes.ieu.edu.tr/tdirek/file2.txt");
-            URL file3 = new URL("http://homes.ieu.edu.tr/tdirek/file3.txt");
-
-            ArrayList<URL> urls = new  ArrayList<>();
-
-            urls.add(file1);
-            urls.add(file2);
-            urls.add(file3);
-        
-            Lab4.OperationByCLI(urls); 
-        } 
-        catch (MalformedURLException ex)
-        {
-            Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        Lab4.OperationByCLI(Url_Storage());  
     }
     private static void LAB5()
     {
         try 
         { 
-            Lab5.OperationByCLI();
+            Lab5.OperationByFile();
+            //Lab5.OperationByURL(Url_Storage());
         } 
-        catch (IOException e) 
+        catch (Exception e) 
         {
             System.out.println("Error: "+e.getLocalizedMessage()+"");
         }

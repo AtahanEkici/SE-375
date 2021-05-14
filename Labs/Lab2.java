@@ -85,7 +85,7 @@ public class Lab2 extends Lab1
         Scanner scan_word = new Scanner(System.in);
         System.out.print("Plase input word : ");
         String scanned = scan_word.nextLine(); // catch keyword //
-        Lab3 lab3 = new Lab3(files,scanned);
+        Lab3 lab3 = new Lab3(files,scanned,1);
         lab3.Start();
     }
     public static void OperationByGUI() throws IOException
