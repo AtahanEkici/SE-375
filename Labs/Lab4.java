@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.apache.commons.io.FilenameUtils;
+import org.apache.commons.io.FilenameUtils; // Delete this import if you dont have the library //
 
 public final class Lab4 extends Lab2 implements Runnable 
 {

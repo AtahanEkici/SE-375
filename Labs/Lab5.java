@@ -26,6 +26,11 @@ public class Lab5 extends Lab3 implements Runnable
         super(urls, word);
     }
     
+    public synchronized int getCounter()
+    {
+        return ++counter;
+    }
+    
     public static void readFile(File file, String word) throws FileNotFoundException, IOException
     { 
             String[] words;
@@ -66,11 +71,11 @@ public class Lab5 extends Lab3 implements Runnable
             if(this.urls == null) // if the File mod is engaged //
             {
             System.out.println("Thread " + Thread.currentThread().getId()+ " is running"); 
-            Lab5.readFile(files.get(++counter), word);
+            Lab5.readFile(files.get(getCounter()), word);
             }
             else // if the URL mode is engaged //
             {
-              Lab4.readFileUsingURI(urls.get(++counter), word);  
+              Lab4.readFileUsingURI(urls.get(getCounter()), word);  
             }           
         } 
         catch (IOException e) 
