@@ -1,9 +1,5 @@
 package Labs;
 
-import static Labs.Lab1.FileOperation;
-import static Labs.Lab1.catchInput;
-import static Labs.Lab1.splitter;
-import static Labs.Lab4.readFileUsingURI;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -23,13 +19,11 @@ public class Lab5 extends Lab3 implements Runnable
     public Lab5(ArrayList<File> files, String word,int a) 
     {
         super(files, word,1);
-        System.out.println(Thread.activeCount());
     }
     
     public Lab5(ArrayList<URL> urls, String word) 
     {
         super(urls, word);
-        System.out.println(Thread.activeCount());
     }
     
     public static void readFile(File file, String word) throws FileNotFoundException, IOException
@@ -37,6 +31,7 @@ public class Lab5 extends Lab3 implements Runnable
             String[] words;
             int counter_1 = 0;
             String line;
+            
             
             try (RandomAccessFile RAF = new RandomAccessFile(file, "rw"); FileChannel channel = RAF.getChannel()) 
                 {
@@ -68,14 +63,14 @@ public class Lab5 extends Lab3 implements Runnable
    {
         try 
         {
-            if(urls == null)
+            if(this.urls == null) // if the File mod is engaged //
             {
             System.out.println("Thread " + Thread.currentThread().getId()+ " is running"); 
             Lab5.readFile(files.get(++counter), word);
             }
-            else
+            else // if the URL mode is engaged //
             {
-              readFileUsingURI(urls.get(++counter), word);  
+              Lab4.readFileUsingURI(urls.get(++counter), word);  
             }           
         } 
         catch (IOException e) 

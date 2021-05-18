@@ -8,7 +8,7 @@ import java.util.logging.Logger;
 
 public class Main 
 {
-    public static ArrayList<URL> Url_Storage()
+    public static ArrayList<URL> Url_Storage() throws IOException
     {
          ArrayList<URL> urls = new  ArrayList<>();
          
@@ -60,8 +60,8 @@ public class Main
     {
         try 
         { 
-            Lab5.OperationByFile();
-            //Lab5.OperationByURL(Url_Storage());
+            //Lab5.OperationByFile();
+            Lab5.OperationByURL(Url_Storage());
         } 
         catch (Exception e) 
         {

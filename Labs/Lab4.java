@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.apache.commons.io.FilenameUtils;
 
 public final class Lab4 extends Lab2 implements Runnable 
 {
@@ -57,20 +58,17 @@ public final class Lab4 extends Lab2 implements Runnable
         }
     }
    
-   public static void readFileUsingURI(URL FileURI, String word) throws FileNotFoundException, IOException
+   public static void readFileUsingURI(URL FileURL, String word) throws FileNotFoundException, IOException
     { 
             String[] words;
             int counter_1 = 0;
             String line;
+            String fileName = FilenameUtils.getName(FileURL.getPath());
 
-            try (BufferedReader in = new BufferedReader(new InputStreamReader(FileURI.openStream()))) 
+            try (BufferedReader in = new BufferedReader(new InputStreamReader(FileURL.openStream()))) 
                 {
                     while ((line = in.readLine()) != null)
-                    {
-                        line = line.replaceAll("\\,", "");
-                        line = line.replaceAll("\\.", "");
-                        line = line.trim();
-                        
+                    {   
                         words = line.split(" "); 
                         
                         for (String word1 : words)
@@ -81,9 +79,9 @@ public final class Lab4 extends Lab2 implements Runnable
                             }
                         }
                     }
-                    System.out.println("Thread " + Thread.currentThread().getId()+ " has read file: "+FileURI.getPath()+"");
+                    System.out.println("Thread " + Thread.currentThread().getId()+ " has read file: "+fileName+"");
                 }
-            System.out.println(FileURI.getPath()+ ": "+counter_1+" found");
+            System.out.println(fileName+ ": "+counter_1+" found");
     }
 
    @Override

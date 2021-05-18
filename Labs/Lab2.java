@@ -36,8 +36,8 @@ public class Lab2 extends Lab1
             System.out.println(file.getName() + ": " + counter_1 + " found");
         }
     }
-    
-     public static void readFile(File file, String word) throws FileNotFoundException, IOException
+
+    public static void readFile(File file, String word) throws FileNotFoundException, IOException
     { 
             String[] words;
             int counter_1 = 0;
