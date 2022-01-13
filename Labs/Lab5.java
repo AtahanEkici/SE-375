@@ -26,7 +26,7 @@ public class Lab5 extends Lab3 implements Runnable
         super(urls, word);
     }
     
-    public synchronized int getCounter()
+    public synchronized int getCounter() // Thread Safe //
     {
         return ++counter;
     }
@@ -59,8 +59,7 @@ public class Lab5 extends Lab3 implements Runnable
                     lock.release();
                     System.out.println("Thread " + Thread.currentThread().getId()+ " has UNlocked the file: "+file.getName()+"");
                     System.out.println(file.getName()+ ": "+counter_1+" found");
-                } // file lock
-        // file lock
+                }
             }
     
     @Override

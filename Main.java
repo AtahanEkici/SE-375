@@ -27,9 +27,9 @@ public class Main
             Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
         }
         return urls;
-    }
+    } 
     
-    public static void LAB1()
+    private static void LAB1()
     {
         try 
         { 
@@ -60,8 +60,8 @@ public class Main
     {
         try 
         { 
-            //Lab5.OperationByFile();
-            Lab5.OperationByURL(Url_Storage());
+            Lab5.OperationByFile();
+            //Lab5.OperationByURL(Url_Storage());
         } 
         catch (Exception e) 
         {
@@ -69,11 +69,36 @@ public class Main
         }
     }
     
+    public static void LAB6() throws IOException
+    {
+        String deneme = "deneme";
+        Lab6.Setup(deneme);
+    }
+    
     public static void main(String[] args) throws IOException
     {
        //LAB1();  
        //LAB2();
         //LAB4();
-        LAB5();
+        //LAB5();
+        LAB6();
     }
+}
+
+class Server extends Thread 
+{
+  @Override
+  public void run() 
+  {
+    System.out.println("This code is running in a thread");
+  }
+}
+
+class Client extends Thread 
+{
+  @Override
+  public void run() 
+  {
+    System.out.println("This code is running in a thread");
+  }
 }

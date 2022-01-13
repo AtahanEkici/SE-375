@@ -61,7 +61,7 @@ public class Lab3 extends Lab2 implements Runnable
         try 
         {
             System.out.println("Thread " + Thread.currentThread().getId()+ " is running"); 
-            readFile(files.get((int) Thread.currentThread().getId() - 11), word);
+            readFile(files.get((int) Thread.currentThread().getId() - (Runtime.getRuntime().availableProcessors()-1)), word);
         } 
         catch (IOException e) 
         {

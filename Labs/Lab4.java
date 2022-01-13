@@ -89,7 +89,7 @@ public final class Lab4 extends Lab2 implements Runnable
    {
         try 
         {
-            readFileUsingURI(urls.get((int)Thread.currentThread().getId() - 11), word);    
+            readFileUsingURI(urls.get((int)Thread.currentThread().getId() - (Runtime.getRuntime().availableProcessors()-1)), word);    
         } 
         catch (IOException e) 
         {

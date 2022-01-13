@@ -40,7 +40,7 @@ public final class Lab2_Runnable extends Lab2 implements Runnable
         try 
         {
             System.out.println("Thread " + Thread.currentThread().getId()+ " is running"); 
-            Lab2.readFile(files.get((int) Thread.currentThread().getId() - 11), word);
+            Lab2.readFile(files.get((int) Thread.currentThread().getId() - (Runtime.getRuntime().availableProcessors()-1)), word);
         } 
         catch (IOException e) 
         {
